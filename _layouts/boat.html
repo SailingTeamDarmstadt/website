@@ -1,0 +1,68 @@
+---
+layout: default
+---
+{%- capture subnav %}{% include subnav.html %}{% endcapture -%}
+<div class="container page-body has-subnav boat-page">
+  <div class="boat">
+    <section class="boat-top">
+      <div class="boat-text">
+        <h1>{{ page.number }} – „{{ page.boat_name }}“</h1>
+        {%- if page.since != "" %}<p class="boat-since">{{ page.since }}</p>{% endif %}
+        <div class="prose">{{ content }}</div>
+      </div>
+
+      {%- if page.gallery and page.gallery.size > 0 %}
+      <div class="boat-media">
+        <a class="boat-main-image" href="{{ page.gallery[0] | relative_url }}">
+          <img src="{{ page.gallery[0] | relative_url }}" alt="{{ page.boat_name }}">
+        </a>
+        {%- if page.gallery.size > 1 %}
+        <div class="boat-thumbs" role="list">
+          {%- for img in page.gallery %}
+          <button type="button" class="boat-thumb{% if forloop.first %} is-active{% endif %}" data-src="{{ img | relative_url }}" aria-label="Bild {{ forloop.index }} anzeigen">
+            <img src="{{ img | relative_url }}" alt="" loading="lazy">
+          </button>
+          {%- endfor %}
+        </div>
+        {%- endif %}
+      </div>
+      {%- endif %}
+    </section>
+
+    {%- if page.specs or page.goal %}
+    <section class="spec-list">
+      {%- if page.goal %}
+      <div class="spec-item">
+        {% include spec-icon.html title="Ziel" %}
+        <div>
+          <h3>Ziel</h3>
+          <p>{{ page.goal | join: "<br>" }}</p>
+        </div>
+      </div>
+      {%- endif %}
+      {%- for spec in page.specs %}
+      <div class="spec-item">
+        {% include spec-icon.html title=spec.title %}
+        <div>
+          <h3>{{ spec.title }}</h3>
+          <p>{{ spec.items | join: "<br>" }}</p>
+        </div>
+      </div>
+      {%- endfor %}
+    </section>
+    {%- endif %}
+
+    {%- if page.partners %}
+    <section class="boat-partners">
+      <h2>Unterstützt von</h2>
+      <div class="logo-grid">
+        {%- for logo in page.partners %}<img src="{{ logo | relative_url }}" alt="" loading="lazy">{% endfor %}
+      </div>
+      {%- if page.partners_link %}
+      <p><a class="link-arrow" href="{{ page.partners_link | relative_url }}">Alle Partner von {{ page.number }}</a></p>
+      {%- endif %}
+    </section>
+    {%- endif %}
+  </div>
+  <aside>{{ subnav }}</aside>
+</div>

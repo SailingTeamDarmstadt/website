@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo title=true %}
+  {% feed_meta %}
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
+  <link rel="apple-touch-icon" href="{{ '/assets/img/logo-mark.png' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+</head>
+<body class="layout-{{ page.layout }}">
+  <a class="skip-link" href="#content">Zum Inhalt springen</a>
+  {% include header.html overlay=page.header_overlay %}
+  <main id="content">
+    {{ content }}
+  </main>
+  {% include footer.html %}
+</body>
+</html>

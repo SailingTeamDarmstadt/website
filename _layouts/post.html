@@ -1,0 +1,41 @@
+---
+layout: default
+---
+{%- assign is_task = false -%}
+{%- if page.collection == "tasks" %}{% assign is_task = true %}{% endif -%}
+<article class="post">
+  <header class="container container--narrow page-header post-header">
+    <p class="kicker">
+      {% if is_task %}<a href="{{ '/mitmachen/aktuelle-aufgaben/' | relative_url }}">Aktuelle Aufgabe</a>{% else %}<a href="{{ '/news/' | relative_url }}">News</a>{% endif %}
+      · {% include date.html date=page.date %}{% if page.author %} · {{ page.author }}{% endif %}
+    </p>
+    <h1>{{ page.title }}</h1>
+  </header>
+
+  {%- if page.image %}
+  <div class="container container--narrow post-cover">
+    <img src="{{ page.image | relative_url }}" alt="">
+  </div>
+  {%- endif %}
+
+  <div class="container container--narrow prose">
+    {{ content }}
+
+    {%- if is_task %}
+    <div class="callout">
+      <strong>Lust, diese Aufgabe zu übernehmen?</strong>
+      Meldet euch auf unserem <a href="{{ site.discord }}" target="_blank" rel="noopener">Discord</a>
+      oder per Mail an <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
+    </div>
+    {%- endif %}
+  </div>
+
+  <nav class="container container--narrow post-nav" aria-label="Weitere Beiträge">
+    {%- if page.previous %}
+    <a class="prev" href="{{ page.previous.url | relative_url }}"><span>Älter</span>{{ page.previous.title }}</a>
+    {%- else %}<span></span>{% endif %}
+    {%- if page.next %}
+    <a class="next" href="{{ page.next.url | relative_url }}"><span>Neuer</span>{{ page.next.title }}</a>
+    {%- endif %}
+  </nav>
+</article>

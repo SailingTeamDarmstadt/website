@@ -1,0 +1,22 @@
+---
+layout: page
+title: Unsere Boote
+lead: Vom Modellbausatz bis zum selbst konstruierten 2,20-m-Rumpf – jeder Prototyp bringt uns dem Atlantik ein Stück näher.
+permalink: /ueber-uns/boote/
+---
+{%- assign boats = site.pages | where: "layout", "boat" | sort: "order" | reverse -%}
+<div class="boat-list">
+  {%- for b in boats %}
+  <a class="boat-card" href="{{ b.url | relative_url }}">
+    <div class="boat-card-media">{% if b.image %}<img src="{{ b.image | relative_url }}" alt="{{ b.boat_name }}" loading="lazy">{% endif %}</div>
+    <div class="boat-card-body">
+      <p class="kicker">{{ b.number }} · {{ b.since }}</p>
+      <h2>{{ b.boat_name }}</h2>
+      {%- if b.goal %}<p>{{ b.goal | join: " · " }}</p>{% endif %}
+      {%- assign dims = b.specs | where: "title", "Abmessungen" | first %}
+      {%- if dims %}<p class="meta">{{ dims.items | join: " · " }}</p>{% endif %}
+      <span class="link-arrow">Zum Boot</span>
+    </div>
+  </a>
+  {%- endfor %}
+</div>

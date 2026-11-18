@@ -1,0 +1,22 @@
+---
+layout: page
+title: Aktuelle Aufgaben
+lead: Konkrete Projekte, bei denen wir gerade Unterstützung suchen. Sucht euch etwas aus und meldet euch bei uns!
+permalink: /mitmachen/aktuelle-aufgaben/
+---
+<div class="task-list">
+  {%- assign tasks = site.tasks | sort: "date" | reverse -%}
+  {%- for p in tasks %}
+  <a class="task" href="{{ p.url | relative_url }}">
+    <h3>{{ p.title }}</h3>
+    <p>{{ p.excerpt | strip_html | remove: "Goal" | truncatewords: 30 }}</p>
+    <span class="meta">{% include date.html date=p.date %}{% if p.author %} · {{ p.author }}{% endif %}</span>
+  </a>
+  {%- endfor %}
+</div>
+
+<div class="callout">
+  <strong>Nichts Passendes dabei?</strong>
+  Kommt trotzdem vorbei – es gibt immer mehr zu tun, als hier steht.
+  Am einfachsten erreicht ihr uns auf <a href="{{ site.discord }}" target="_blank" rel="noopener">Discord</a>.
+</div>

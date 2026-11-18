@@ -1,0 +1,19 @@
+---
+layout: default
+---
+{%- capture subnav %}{% include subnav.html %}{% endcapture -%}
+<div class="container page-body{% if subnav != '' %} has-subnav{% endif %}">
+  <div class="page-main">
+    <header class="page-header">
+      {%- if page.kicker %}<p class="kicker">{{ page.kicker }}</p>{% endif %}
+      <h1>{{ page.title }}</h1>
+      {%- if page.lead %}<p class="lead">{{ page.lead }}</p>{% endif %}
+    </header>
+    <div class="prose">
+      {{ content }}
+    </div>
+  </div>
+  {%- if subnav != '' %}
+  <aside>{{ subnav }}</aside>
+  {%- endif %}
+</div>

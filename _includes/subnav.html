@@ -1,0 +1,29 @@
+{%- comment -%} Side navigation for the section the current page belongs to {%- endcomment -%}
+{%- for item in site.data.navigation -%}
+  {%- if item.children and item.sidebar != false and page.url contains item.url -%}
+<nav class="subnav" aria-label="{{ item.title }}">
+  <ul>
+    {%- for child in item.children %}
+    <li><a href="{{ child.url | relative_url }}"{% if page.url == child.url %} class="current"{% endif %}>{{ child.title }}</a>
+      {%- if child.children %}
+      <ul>
+        {%- for sub in child.children %}
+        <li><a href="{{ sub.url | relative_url }}"{% if page.url == sub.url %} class="current"{% endif %}>{{ sub.title }}</a></li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </li>
+    {%- endfor %}
+    {%- for extra in item.sidebar_links %}
+    <li><a href="{{ extra.url | relative_url }}">{{ extra.title }}</a></li>
+    {%- endfor %}
+  </ul>
+</nav>
+{%- if item.sidebar_box %}
+<div class="sidebar-box">
+  <h2>{{ item.sidebar_box.title }}</h2>
+  <a href="{{ item.sidebar_box.url | relative_url }}" target="_blank" rel="noopener">{{ item.sidebar_box.label }}</a>
+</div>
+{%- endif %}
+  {%- endif -%}
+{%- endfor -%}

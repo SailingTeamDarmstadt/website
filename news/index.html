@@ -1,0 +1,38 @@
+---
+layout: page
+title: News
+lead: Testfahrten, Wettbewerbe, Workshops und was sonst so im Sailing Team passiert.
+permalink: /news/
+---
+{%- assign years = "" | split: "" -%}
+{%- for p in site.posts -%}{%- assign y = p.date | date: "%Y" -%}{%- unless years contains y -%}{%- assign years = years | push: y -%}{%- endunless -%}{%- endfor -%}
+
+{%- assign pinned = site.posts | where: "pinned", true -%}
+{%- if pinned.size > 0 %}
+<section class="year-group pinned-group" id="angepinnt">
+  <h2 class="year-heading">Angepinnt</h2>
+  <div class="card-grid card-grid--wide">
+    {%- for p in pinned %}
+      {% include post-card.html post=p %}
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+
+<nav class="year-nav" aria-label="Jahre">
+  {%- for y in years %}<a href="#jahr-{{ y }}">{{ y }}</a>{% endfor %}
+</nav>
+
+{%- for y in years %}
+<section class="year-group" id="jahr-{{ y }}">
+  <h2 class="year-heading">{{ y }}</h2>
+  <div class="card-grid card-grid--wide">
+    {%- for p in site.posts -%}
+      {%- assign py = p.date | date: "%Y" -%}
+      {%- if py == y -%}
+        {% include post-card.html post=p %}
+      {%- endif -%}
+    {%- endfor %}
+  </div>
+</section>
+{%- endfor %}

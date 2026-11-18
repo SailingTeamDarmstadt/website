@@ -1,0 +1,56 @@
+title: Sailing Team Darmstadt e.V.
+short_title: Sailing Team Darmstadt
+tagline: Technik lernt segeln.
+description: >-
+  Studentischer Verein der TU Darmstadt. Wir entwickeln autonome, energieautarke
+  Segelboote – mit dem Ziel, den Atlantik unbemannt zu überqueren.
+url: "https://www.st-darmstadt.de"
+baseurl: ""
+lang: de_DE
+timezone: Europe/Berlin
+
+# Keep the old WordPress URLs so existing links keep working
+permalink: /:year/:month/:title/
+
+# Where older news (not yet migrated) still live
+old_site: "https://www.st-darmstadt.de"
+
+email: info@sailingteam.tu-darmstadt.de
+discord: https://discord.com/invite/qjT4KqRUZn
+social:
+  - { name: Instagram, url: "https://instagram.com/SailingTeam_Darmstadt/" }
+  - { name: LinkedIn,  url: "https://www.linkedin.com/company/sailing-team-darmstadt/" }
+  - { name: YouTube,   url: "https://www.youtube.com/channel/UCUPTPU25UnWvj681SLVzqrg" }
+  - { name: Facebook,  url: "https://www.facebook.com/SailingTeamDarmstadt/" }
+  - { name: Discord,   url: "https://discord.com/invite/qjT4KqRUZn" }
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  tasks:
+    output: true
+    permalink: /:year/:month/:title/
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "", type: tasks }
+    values: { layout: post }
+  - scope: { path: "" }
+    values: { layout: page }
+
+exclude:
+  - tools
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .jekyll-cache

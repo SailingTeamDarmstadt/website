@@ -1,0 +1,95 @@
+---
+layout: default
+title: Technik lernt segeln
+header_overlay: true
+---
+<section class="hero">
+  <img class="hero-bg" src="{{ '/assets/img/hero.jpg' | relative_url }}" alt="">
+  <div class="container hero-content">
+    <p class="kicker">Autonom. Energieautark. Unbemannt.</p>
+    <h1>Über den Atlantik.</h1>
+    <p class="lead">Wir sind Studierende der TU Darmstadt und entwickeln Segelboote, die ganz ohne Mensch an Bord ihren Weg übers Meer finden.</p>
+    <div class="hero-actions">
+      <a class="btn" href="{{ '/ueber-uns/' | relative_url }}">Mehr über uns</a>
+      <a class="btn btn--ghost" href="{{ '/mitmachen/' | relative_url }}">Komm ins Team</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="kicker">Was wir machen</p>
+      <h2>Technik lernt segeln.</h2>
+      <p>In interdisziplinären Teams arbeiten wir an Energieversorgung, Kursfindung, Elektronik, Regelungstechnik, Mechanik und Software – vom ersten Entwurf bis zur Testfahrt auf dem Wasser.</p>
+    </div>
+    <div class="feature-grid">
+      <a class="feature" href="{{ '/ueber-uns/team/elektrotechnik/' | relative_url }}">
+        <img src="{{ '/assets/img/elektronik.jpg' | relative_url }}" alt="Platine mit Motortreibern" loading="lazy">
+        <div><p class="kicker">Elektronik</p><h3>Ausdauernd und intelligent.</h3></div>
+      </a>
+      <a class="feature" href="{{ '/ueber-uns/team/mechanik/' | relative_url }}">
+        <img src="{{ '/assets/img/mechanik.jpg' | relative_url }}" alt="Konstruktionsskizze eines Bootsrumpfs" loading="lazy">
+        <div><p class="kicker">Mechanik</p><h3>Entwickelt, um zu bestehen.</h3></div>
+      </a>
+      <a class="feature" href="{{ '/ueber-uns/team/software/' | relative_url }}">
+        <img src="{{ '/assets/img/software.jpg' | relative_url }}" alt="Prototyp auf dem Wasser" loading="lazy">
+        <div><p class="kicker">Software</p><h3>Zuverlässig experimentell.</h3></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="facts">
+  <div class="container facts-grid">
+    <div><strong>2008</strong><span>gegründet</span></div>
+    <div><strong>35+</strong><span>Mitglieder</span></div>
+    <div><strong>4</strong><span>Prototypen</span></div>
+    <div><strong>7&nbsp;km</strong><span>autonom über den Atlantik (WRSC 2013)</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--row">
+      <div>
+        <p class="kicker">Aktuelles</p>
+        <h2>Neues aus dem Team</h2>
+      </div>
+      <a class="link-arrow" href="{{ '/news/' | relative_url }}">Alle News</a>
+    </div>
+    <div class="card-grid">
+      {%- assign pinned = site.posts | where: "pinned", true -%}
+      {%- assign shown = 0 -%}
+      {%- for p in pinned -%}
+        {%- if shown < 3 -%}
+          {% include post-card.html post=p %}
+          {%- assign shown = shown | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+      {%- for p in site.posts -%}
+        {%- unless p.pinned -%}
+          {%- if shown < 3 -%}
+            {% include post-card.html post=p %}
+            {%- assign shown = shown | plus: 1 -%}
+          {%- endif -%}
+        {%- endunless -%}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <img src="{{ '/assets/img/atlantik.jpg' | relative_url }}" alt="" loading="lazy">
+    <div>
+      <p class="kicker">Mitmachen</p>
+      <h2>Komm ins Team!</h2>
+      <p>Egal ob Elektrotechnik, Maschinenbau, Informatik oder Öffentlichkeitsarbeit – bei uns kannst du an einem echten Robotik-Projekt mitarbeiten. Vorkenntnisse sind keine Pflicht, Neugier schon.</p>
+      <div class="hero-actions">
+        <a class="btn" href="{{ site.discord }}" target="_blank" rel="noopener">Auf Discord vorbeischauen</a>
+        <a class="btn btn--outline" href="{{ '/mitmachen/aktuelle-aufgaben/' | relative_url }}">Aktuelle Aufgaben</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+{%- comment -%} Icon for a spec heading (same symbols as on the old site) {%- endcomment -%}
+{%- assign t = include.title | downcase -%}
+<svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+{%- if t contains "abmessung" -%}
+  <path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/>
+{%- elsif t contains "intelligenz" -%}
+  <path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>
+{%- elsif t contains "sensor" -%}
+  <path d="M3 3v18h18"/><path d="M7 17v-4M11 17V9M15 17v-6M19 17V7"/>
+{%- elsif t contains "kommunikation" -%}
+  <path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r="1" fill="currentColor"/>
+{%- elsif t contains "energie" -%}
+  <path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0V8zM12 18v4"/>
+{%- elsif t contains "segel" -%}
+  <path d="M5 22V3M5 4h12l-3 4 3 4H5"/>
+{%- elsif t contains "wetter" -%}
+  <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+{%- elsif t contains "ais" or t contains "schiff" -%}
+  <path d="M3 18l2 3h14l2-3H3zM5 18l1-6h12l1 6M9 12V7h6v5M12 7V3"/>
+{%- elsif t contains "ziel" -%}
+  <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1" fill="currentColor"/>
+{%- else -%}
+  <circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/>
+{%- endif -%}
+</svg>

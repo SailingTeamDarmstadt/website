@@ -1,0 +1,41 @@
+# Main navigation. Children are shown as dropdowns in the header and as a
+# side navigation on the pages of that section.
+- title: News
+  url: /news/
+- title: Über uns
+  url: /ueber-uns/
+  children:
+    - title: Unsere Boote
+      url: /ueber-uns/boote/
+      children:
+        - { title: "Prototyp IV – „Toelpel“", url: /ueber-uns/boote/prototyp-iv-toelpel/ }
+        - { title: "Prototyp III – „Marlin“", url: /ueber-uns/boote/prototyp-iii/ }
+        - { title: "Prototyp II – „roBOOTer“", url: /ueber-uns/boote/prototyp-ii/ }
+        - { title: "Prototyp I – „Estelle“", url: /ueber-uns/boote/prototyp-i-estelle/ }
+    - title: Das Team
+      url: /ueber-uns/team/
+      children:
+        - { title: Organisation, url: /ueber-uns/team/organisation/ }
+        - { title: Software, url: /ueber-uns/team/software/ }
+        - { title: Elektrotechnik, url: /ueber-uns/team/elektrotechnik/ }
+        - { title: Mechanik, url: /ueber-uns/team/mechanik/ }
+  # Extra entries for the side navigation of this section (as on the old site)
+  sidebar_links:
+    - { title: Aktuelle Aufgaben, url: /mitmachen/aktuelle-aufgaben/ }
+  sidebar_box:
+    title: Alle Infos in unserem Faltblatt
+    label: Faltblatt
+    url: /assets/2019/04/Sailingteam_Faltblatt.pdf
+- title: Partner
+  url: /partner/
+  children:
+    - { title: Jetzt unterstützen!, url: /partner/jetzt-unterstuetzen/ }
+    - { title: Partner Prototyp I, url: /partner/sponsoren-prototyp-i/ }
+    - { title: Partner Prototyp II, url: /partner/sponsoren-prototyp-ii/ }
+- title: Mitmachen
+  url: /mitmachen/
+  sidebar: false   # no side menu in this section
+  children:
+    - { title: Aktuelle Aufgaben, url: /mitmachen/aktuelle-aufgaben/ }
+- title: Kontakt
+  url: /kontakt/

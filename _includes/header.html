@@ -1,0 +1,42 @@
+<header class="site-header{% if include.overlay %} site-header--overlay{% endif %}">
+  <div class="container header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="Sailing Team Darmstadt – Startseite">
+      <img class="logo-dark" src="{{ '/assets/img/logo-dark.png' | relative_url }}" alt="Sailing Team Darmstadt" width="161" height="44">
+      <img class="logo-white" src="{{ '/assets/img/logo-white.png' | relative_url }}" alt="" width="161" height="44">
+    </a>
+
+    <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="main-nav" class="main-nav" aria-label="Hauptnavigation">
+      <ul>
+        {%- for item in site.data.navigation %}
+        {%- assign active = false -%}
+        {%- if page.url contains item.url -%}{%- assign active = true -%}{%- endif -%}
+        {%- if item.url == "/news/" and page.collection == "posts" -%}{%- assign active = true -%}{%- endif -%}
+        {%- if item.url == "/mitmachen/" and page.collection == "tasks" -%}{%- assign active = true -%}{%- endif %}
+        <li class="{% if item.children %}has-children{% endif %}{% if active %} active{% endif %}">
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+          {%- if item.children %}
+          <ul class="dropdown">
+            {%- for child in item.children %}
+            <li><a href="{{ child.url | relative_url }}">{{ child.title }}</a>
+              {%- if child.children %}
+              <ul>
+                {%- for sub in child.children %}
+                <li><a href="{{ sub.url | relative_url }}">{{ sub.title }}</a></li>
+                {%- endfor %}
+              </ul>
+              {%- endif %}
+            </li>
+            {%- endfor %}
+          </ul>
+          {%- endif %}
+        </li>
+        {%- endfor %}
+        <li class="nav-cta"><a class="btn btn--small" href="{{ site.discord }}" target="_blank" rel="noopener">Discord</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,36 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand brand--light" href="{{ '/' | relative_url }}">
+        <img src="{{ '/assets/img/logo-white.png' | relative_url }}" alt="Sailing Team Darmstadt e.V." width="176" height="48">
+      </a>
+      <p class="footer-tagline">{{ site.tagline }} Autonome, energieautarke Segelboote – entwickelt von Studierenden der TU Darmstadt.</p>
+    </div>
+    <div>
+      <h2>Besucht uns</h2>
+      <p>S2|03 Studierendenhaus, Raum 6<br>Hochschulstraße 14<br>64289 Darmstadt</p>
+      <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    </div>
+    <div>
+      <h2>Folgt uns</h2>
+      <ul class="footer-links">
+        {%- for s in site.social %}
+        <li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.name }}</a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <div>
+      <h2>Verein</h2>
+      <ul class="footer-links">
+        <li><a href="{{ '/mitmachen/' | relative_url }}">Mitmachen</a></li>
+        <li><a href="{{ '/partner/jetzt-unterstuetzen/' | relative_url }}">Unterstützen</a></li>
+        <li><a href="{{ '/kontakt/' | relative_url }}">Kontakt</a></li>
+        <li><a href="{{ '/impressum/' | relative_url }}">Impressum</a></li>
+        <li><a href="{{ '/privacy-policy/' | relative_url }}">Datenschutz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© {{ site.time | date: "%Y" }} Sailing Team Darmstadt e.V.</span>
+  </div>
+</footer>
